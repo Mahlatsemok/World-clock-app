@@ -34,7 +34,7 @@ function city(event) {
     let cityTimeZone = event.target.value;
     if (cityTimeZone === "current") 
     cityTimeZone = moment.tz.guess();
-    let cityName = cityTimeZone.replace("_", "").split("/")[1];
+    let cityName = cityTimeZone.replace("_", " ").split("/")[1];
     let cityTime = moment().tz(cityTimeZone);
     let citiesElement = document.querySelector("#cities");
     citiesElement.innerHTML = `
@@ -43,7 +43,8 @@ function city(event) {
     <h2>${cityName}</h2>
     <span class="date">${cityTime.format("MMMM Do YYYY")}</span>
     </span>
-    <span class="time">${cityTime.format("h:mm:ss:SS")}<small>${cityTime.format("A")}</small></span>
+    <span class="time">${cityTime.format("h:mm:ss:SS")} <small>${cityTime.format("A")}</small></span>
+    <a href="index.html">All cities</a>
     `;
 }
 
